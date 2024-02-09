@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+         <h1>Quiz App</h1>   
+            <h5>QuizMaster Challenge</h5>
+        </div>
+    </nav>
+    <div class="quiz-container" id="quiz">
+    <form id="quiz-form">
+        <!-- Example for the first question -->
+        <div class="question">
+            <h3>1. What is a computer?</h3>
+            <input type="text" id="q1" placeholder="Your answer">
+        </div>
+        <div class="question">
+            <h3>2. What is local Storage? </h3>
+            <input type="text" id="q2" placeholder="Your answer">
+        </div>
+        <div class="question">
+            <h3>3. What is a web browser?</h3>
+            <input type="text" id="q3" placeholder="Your answer">
+        </div>
+        <div class="question">
+            <h3>4. What is a web server?</h3>
+            <input type="text" id="q4" placeholder="Your answer">
+        </div>
+        <div class="question">
+            <h3>5. What is a cookie?</h3>
+            <input type="text" id="q5" placeholder="Your answer">
+        </div>
+        <div class="question">
+            <h3>6. What is Javascript?</h3>
+            <input type="text" id="q6">It is a programming language<br>
+        </div>
+        <div class="question">
+            <h3>7. What is a markup language?</h3>
+            <input type="text" id="q7">It is a markup language<br>
+        </div>
+        <div class="question">
+            <h3>8. What is a scripting language?</h3>
+            <input type="text" id="q8">It is a scripting language<br>
+        </div>
+        <div class="question">
+            <h3>9. What is CSS?</h3>
+            <input type="text" id="q9" placeholder="Your answer">
+        </div>
+        <div class="question">
+            <h3>10. What is Fetch API?</h3>
+            <input type="text" id="q10" placeholder="Your answer">
+        </div>
+        <!-- Additional questions with their corresponding IDs -->
+        <button type="button" id="submit-quiz">Submit Answers</button>
+    </form>
+    <div id="result"></div>
+</div>
+<script>
+document.getElementById('submit-quiz').addEventListener('click', function() {
+    var score = 0;
+    var answers = {
+        q1: "An electronic device",
+        q2: "Stores user information and have it store locally  in the browser",
+        q3: "A software application designed to access, retrieve, and display content on the World Wide Web",
+        q4: "It is both hardware and software that stores, processes, and delivers web pages and other content to users via the internet or an intranet",
+        q5: "Is a small piece of data sent from a website and stored on the user's computer by the user's web browser while the user is browsing. ",
+        q6: "Is a web scripting programming language that can be used to make the web page dyn",
+        q7: "Is a markup language that can be used to make the web page interactive",
+        q8: "Is a scripting language that can be used to make the web page interactive",
+        q9: "Is a style sheet language that can be used to make the web page interactive",
+        q10: "Is a Fetch API that can be used to make the web page interactive"
+    };
+
+    for (const [key, value] of Object.entries(answers)) {
+        var userAnswer = document.getElementById(key) ? document.getElementById(key).value.toLowerCase() : '';
+        if (userAnswer === value.toLowerCase()) {
+            score++;
+        }
+    }
+
+    var resultText = "You scored " + score + " out of " + Object.keys(answers).length;
+    document.getElementById('result').innerText = resultText;
+});
+</script>
+</body>
+</html>
